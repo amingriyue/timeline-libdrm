@@ -56,6 +56,7 @@
 #define UVD_ENC_TESTS_STR "UVD ENC Tests"
 #define DEADLOCK_TESTS_STR "Deadlock Tests"
 #define VM_TESTS_STR "VM Tests"
+#define SYNCOBJ_TIMELINE_TESTS_STR "SYNCOBJ TIMELINE Tests"
 
 /**
  *  Open handles for amdgpu devices
@@ -116,6 +117,12 @@ static CU_SuiteInfo suites[] = {
 		.pCleanupFunc = suite_vm_tests_clean,
 		.pTests = vm_tests,
 	},
+	{
+		.pName = SYNCOBJ_TIMELINE_TESTS_STR,
+		.pInitFunc = suite_syncobj_timeline_tests_init,
+		.pCleanupFunc = suite_syncobj_timeline_tests_clean,
+		.pTests = syncobj_timeline_tests,
+	},
 
 	CU_SUITE_INFO_NULL,
 };
@@ -165,6 +172,11 @@ static Suites_Active_Status suites_active_stat[] = {
 			.pName = VM_TESTS_STR,
 			.pActive = suite_vm_tests_enable,
 		},
+		{
+			.pName = SYNCOBJ_TIMELINE_TESTS_STR,
+			.pActive = suite_syncobj_timeline_tests_enable,
+		},
+
 };
 
 
